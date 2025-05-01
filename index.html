@@ -484,23 +484,53 @@
         </section>
 
    <!-- Button Container -->
+<!-- Download Resume Button -->
 <div style="text-align: center; margin-top: 2rem;">
-  <a href="Chetan Singh Chouhan resume.pdf" download
-     class="download-btn"
-     style="display: inline-flex; align-items: center; gap: 0.5rem; background-color: #888; color: white; padding: 0.75rem 1.5rem; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background-color 0.3s ease, transform 0.2s ease;">
-    <ion-icon name="download-outline"></ion-icon>
+  <a href="resume.pdf" download id="downloadResumeButton"
+     style="
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: auto;
+      padding: 13px 20px;
+      border-radius: 14px;
+      font-size: 16px;
+      text-transform: capitalize;
+      color: #ffcb74; /* var(--orange-yellow-crayola) */
+      background: linear-gradient(145deg, #3a3a3a, #1f1f1f); /* var(--border-gradient-onyx) */
+      box-shadow: 0px 4px 6px rgba(0,0,0,0.4); /* var(--shadow-3) */
+      z-index: 1;
+      text-decoration: none;
+      overflow: hidden;
+     ">
+    <span style="
+      content: '';
+      position: absolute;
+      inset: 1px;
+      background: linear-gradient(to bottom right, #2e2e2e, #111); /* var(--bg-gradient-jet) */
+      border-radius: 14px;
+      z-index: -1;
+      transition: all 0.3s ease;
+    "></span>
+    <ion-icon name="download-outline" style="font-size: 16px;"></ion-icon>
     Download My Resume
   </a>
 </div>
 
-<!-- Hover effect for the button -->
+<!-- Hover effect using CSS (since inline doesn't support :hover) -->
 <style>
-  .download-btn:hover {
-    background-color: #555; /* darker gray */
-    transform: scale(1.05); /* slight zoom */
-    cursor: pointer;
+  #downloadResumeButton:hover {
+    background: linear-gradient(145deg, #ffb100, #ffdd57); /* var(--bg-gradient-yellow-1) */
+    transform: scale(1.02);
+  }
+
+  #downloadResumeButton:hover span {
+    background: linear-gradient(to bottom right, #ffe484, #ffb347); /* var(--bg-gradient-yellow-2) */
   }
 </style>
+
 
       
       </article>
@@ -760,6 +790,7 @@
   -->
  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
 
 
 
