@@ -28,6 +28,22 @@
 <body>
 
   <!--
+    - #GALAXY STAR BACKGROUND
+  -->
+  <canvas id="galaxy-canvas"></canvas>
+
+  <!--
+    - #LOADING ANIMATION
+  -->
+  <div class="loading" id="loading">
+    <svg height="48px" width="64px">
+      <polyline id="back" points="0.157 23.954, 14 23.954, 21.843 48, 43 0, 50 24, 64 24"></polyline>
+      <polyline id="front" points="0.157 23.954, 14 23.954, 21.843 48, 43 0, 50 24, 64 24"></polyline>
+      <polyline id="front2" points="0.157 23.954, 14 23.954, 21.843 48, 43 0, 50 24, 64 24"></polyline>
+    </svg>
+  </div>
+
+  <!--
     - #MAIN
   -->
 
@@ -41,8 +57,10 @@
 
       <div class="sidebar-info">
 
-        <figure class="avatar-box">
-          <img src="./assets/images/self.jpg" alt="Chetan Singh Chouhan" width="80" style="border-radius: 30px; overflow: hidden;">
+        <figure class="avatar-box" data-avatar-click>
+          <div class="avatar-frame">
+            <img src="./assets/images/self.jpg" alt="Chetan Singh Chouhan">
+          </div>
         </figure>
         
 
@@ -126,6 +144,15 @@
 
         <div class="separator"></div>
 
+        <div class="admin-link-container">
+          <a href="#" class="admin-link" id="admin-login-link" title="Admin Login">
+            <ion-icon name="lock-closed-outline"></ion-icon>
+            <span>Admin</span>
+          </a>
+        </div>
+
+        <div class="separator"></div>
+
         <!-- <ul class="social-list">
 
           <li class="social-item">
@@ -179,7 +206,7 @@
           </li>
 
           <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Portfolio</button>
+            <button class="navbar-link" data-nav-link>Projects</button>
           </li>
 
           <li class="navbar-item">
@@ -432,56 +459,6 @@
           </ol>
       
         </section>
-      
-        <section class="skill">
-      
-          <h3 class="h3 skills-title" style="color: white;">My Skills</h3>
-      
-          <ul class="skills-list content-card">
-      
-            <li class="skills-item">
-              <div class="title-wrapper">
-                <h5 class="h5">IoT Development</h5>
-                <data value="90">90%</data>
-              </div>
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 90%;"></div>
-              </div>
-            </li>
-      
-            <li class="skills-item">
-              <div class="title-wrapper">
-                <h5 class="h5">Machine Learning</h5>
-                <data value="80">80%</data>
-              </div>
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 80%;"></div>
-              </div>
-            </li>
-      
-            <li class="skills-item">
-              <div class="title-wrapper">
-                <h5 class="h5">Python Programming</h5>
-                <data value="85">85%</data>
-              </div>
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 85%;"></div>
-              </div>
-            </li>
-      
-            <li class="skills-item">
-              <div class="title-wrapper">
-                <h5 class="h5">Team Leadership</h5>
-                <data value="95">95%</data>
-              </div>
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 95%;"></div>
-              </div>
-            </li>
-      
-          </ul>
-      
-        </section>
 
    <!-- Button Container -->
 <!-- Download Resume Button -->
@@ -544,7 +521,7 @@
         - #PORTFOLIO
       -->
 
-      <article class="portfolio" data-page="portfolio">
+      <article class="portfolio" data-page="projects">
 
         <header>
           <h2 class="h2 article-title">Projects</h2>
@@ -574,56 +551,190 @@
         
           <ul class="project-list">
         
-            <li class="project-item active" data-filter-item data-category="Machine Learning">
-              <a href="https://github.com/Chetansingh384/Upflair-Intern/tree/main/email_classification_project" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
+            <li class="project-item active" data-filter-item data-category="Machine Learning" 
+                data-project-id="email-classification"
+                data-project-title="Email Classification"
+                data-project-category="Machine Learning"
+                data-project-github="https://github.com/Chetansingh384/Upflair-Intern/tree/main/email_classification_project"
+                data-project-image="./assets/images/project-1.jpg"
+                data-project-detail-image="./assets/images/project-1.jpg"
+                data-project-description="An intelligent email classification system that automatically categorizes emails as spam or legitimate. Built using machine learning algorithms to analyze email content and detect spam patterns with high accuracy."
+                data-project-abstract="This project implements a sophisticated email classification system designed to automatically distinguish between spam and legitimate emails. The system leverages advanced machine learning algorithms to analyze email content, detect spam patterns, and provide high-accuracy filtering. It processes email text, headers, and metadata to make intelligent classification decisions, helping users maintain clean inboxes and reduce security risks."
+                data-project-features="Email spam detection, Machine learning classification, High accuracy rate, Automated filtering"
+                data-project-contributors="Chetan Singh Chouhan">
+              <div class="project-card">
+                <div class="project-card-image">
                   <img src="./assets/images/project-1.jpg" alt="email email_classification_project" loading="lazy">
-                </figure>
-                <h3 class="project-title">Email classification</h3>
+                </div>
+                <p class="project-title">Email classification</p>
+                <p class="project-powered">Powered By</p>
                 <p class="project-category">Machine learning</p>
-              </a>
+                <div class="project-buttons">
+                  <a href="https://github.com/Chetansingh384/Upflair-Intern/tree/main/email_classification_project" target="_blank" class="project-btn project-btn-github">
+                    <ion-icon name="logo-github"></ion-icon>
+                    View GitHub
+                  </a>
+                  <button class="project-btn project-btn-details" data-project-modal="email-classification">
+                    <ion-icon name="information-circle-outline"></ion-icon>
+                    Details
+                  </button>
+                </div>
+              </div>
             </li>
         
-            <li class="project-item active" data-filter-item data-category="machine learning">
-              <a href="https://github.com/Chetansingh384/Emotion_detection_cnn" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
+            <li class="project-item active" data-filter-item data-category="machine learning"
+                data-project-id="emotion-detection"
+                data-project-title="Emotion Detection"
+                data-project-category="Deep Learning"
+                data-project-github="https://github.com/Chetansingh384/Emotion_detection_cnn"
+                data-project-image="./assets/images/project-2.jpg"
+                data-project-detail-image="./assets/images/project-2.jpg"
+                data-project-description="A deep learning-based emotion detection system using Convolutional Neural Networks (CNN) to recognize and classify human emotions from facial expressions in real-time."
+                data-project-abstract="This project presents an advanced emotion detection system powered by deep learning and Convolutional Neural Networks (CNN). The system can analyze facial expressions in real-time and accurately classify human emotions including happiness, sadness, anger, surprise, fear, and neutral states. It processes video streams or static images to provide instant emotion recognition, making it suitable for applications in human-computer interaction, sentiment analysis, and psychological research."
+                data-project-features="Real-time emotion detection, CNN-based classification, Multiple emotion recognition, High accuracy facial analysis"
+                data-project-contributors="Chetan Singh Chouhan">
+              <div class="project-card">
+                <div class="project-card-image">
                   <img src="./assets/images/project-2.jpg" alt="Emotion Detection" loading="lazy">
-                </figure>
-                <h3 class="project-title">Emotion Detection</h3>
+                </div>
+                <p class="project-title">Emotion Detection</p>
+                <p class="project-powered">Powered By</p>
                 <p class="project-category">Deep Learning</p>
-              </a>
+                <div class="project-buttons">
+                  <a href="https://github.com/Chetansingh384/Emotion_detection_cnn" target="_blank" class="project-btn project-btn-github">
+                    <ion-icon name="logo-github"></ion-icon>
+                    View GitHub
+                  </a>
+                  <button class="project-btn project-btn-details" data-project-modal="emotion-detection">
+                    <ion-icon name="information-circle-outline"></ion-icon>
+                    Details
+                  </button>
+                </div>
+              </div>
             </li>
         
-            <li class="project-item active" data-filter-item data-category="web development">
-              <a href="https://github.com/Chetansingh384/My-First-Website" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
+            <li class="project-item active" data-filter-item data-category="web development"
+                data-project-id="web-development"
+                data-project-title="Web Development"
+                data-project-category="Web Design"
+                data-project-github="https://github.com/Chetansingh384/My-First-Website"
+                data-project-image="./assets/images/project-3.jpg"
+                data-project-detail-image="./assets/images/project-3.jpg"
+                data-project-description="A modern and responsive website showcasing IoT innovations and web development technologies. Features clean design, interactive elements, and seamless user experience."
+                data-project-abstract="A cutting-edge web development project that showcases Internet of Things (IoT) innovations through a modern, responsive website. Built with contemporary web technologies, the site features a clean and intuitive user interface with interactive elements that demonstrate IoT concepts and applications. The website provides an immersive user experience while highlighting various IoT solutions and their real-world implementations."
+                data-project-features="Responsive design, Modern UI/UX, Interactive elements, IoT integration showcase"
+                data-project-contributors="Chetan Singh Chouhan">
+              <div class="project-card">
+                <div class="project-card-image">
                   <img src="./assets/images/project-3.jpg" alt="Web Development" loading="lazy">
-                </figure>
-                <h3 class="project-title">Web Development</h3>
+                </div>
+                <p class="project-title">Web Development</p>
+                <p class="project-powered">Powered By</p>
                 <p class="project-category">Web Design</p>
-              </a>
+                <div class="project-buttons">
+                  <a href="https://github.com/Chetansingh384/My-First-Website" target="_blank" class="project-btn project-btn-github">
+                    <ion-icon name="logo-github"></ion-icon>
+                    View GitHub
+                  </a>
+                  <button class="project-btn project-btn-details" data-project-modal="web-development">
+                    <ion-icon name="information-circle-outline"></ion-icon>
+                    Details
+                  </button>
+                </div>
+              </div>
             </li>
         
-            <li class="project-item active" data-filter-item data-category="web development">
-              <a href="" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <img src="./assets/images/project-41.jpg" alt="Smart iGlasses" loading="lazy">
-                </figure>
-                <h3 class="project-title">Smart iGlasses</h3>
-                <p class="project-category">IoT and deep learning</p>
-              </a>
+            <li class="project-item active" data-filter-item data-category="IoT and AI"
+                data-project-id="smart-navigation-system"
+                data-project-title="Smart-I goggles"
+                data-project-category="IoT and AI"
+                data-project-github="https://github.com/Chetansingh384"
+                data-project-image="./assets/images/project-41.jpg"
+                data-project-detail-image="./assets/images/smart_goggles.png"
+                data-project-description="An innovative wearable device using real-time image recognition, AI, and IoT. Equipped with a camera module for live image capture and audio feedback, designed for Tourism and Assistance for the Visually Impaired."
+                data-project-abstract="Smart-I Goggles is an innovative wearable device that leverages real-time image recognition, AI, and IoT technology. The device features a camera module for live image capture and provides audio feedback for two major applications: Tourism and Assistance for the Visually Impaired. In tourism, it identifies landmarks and objects in real-time, providing audio descriptions. For visually impaired individuals, it recognizes people, objects, and food items, converting visual data into audio messages. Powered by a private LLM for data privacy, this project integrates AI, IoT, and assistive technology to improve accessibility."
+                data-project-features="Real-time image recognition, AI-powered object detection, Audio feedback system, Tourism application, Assistance for visually impaired, People and object recognition, Private LLM for data privacy, IoT integration, Camera module integration"
+                data-project-contributors='[{"name": "Chetan Singh Chouhan", "affiliation": "RAIoT Labs, Amity University Rajasthan, Jaipur, India", "email": "chouhanchetan066@gmail.com", "linkedin": "https://www.linkedin.com/in/chetan-singh-chouhan-b6bb4a265/"}]'>
+              <div class="project-card">
+                <div class="project-card-image">
+                  <img src="./assets/images/project-41.jpg" alt="Smart-I goggles" loading="lazy">
+                </div>
+                <p class="project-title">Smart-I goggles</p>
+                <p class="project-powered">Powered By</p>
+                <p class="project-category">IoT and AI</p>
+                <div class="project-buttons">
+                  <a href="https://github.com/Chetansingh384" target="_blank" class="project-btn project-btn-github">
+                    <ion-icon name="logo-github"></ion-icon>
+                    View GitHub
+                  </a>
+                  <button class="project-btn project-btn-details" data-project-modal="smart-navigation-system">
+                    <ion-icon name="information-circle-outline"></ion-icon>
+                    Details
+                  </button>
+                </div>
+              </div>
+            </li>
+
+            <li class="project-item active" data-filter-item data-category="IoT and AI"
+                data-project-id="ai-powered-green-mindpot"
+                data-project-title="AI Powered Green MindPot"
+                data-project-category="IoT and AI"
+                data-project-github="https://github.com/Chetansingh384"
+                data-project-image="./assets/images/pot_poster.png"
+                data-project-detail-image="./assets/images/pot_image.png"
+                data-project-description="An innovative smart plant system combining IoT, AI, and Machine Learning to revolutionize plant care. Features emotive display, smart alerts, touch-interactive interface, and smartphone connectivity."
+                data-project-abstract="The AI Powered GreenMind Pot is an innovative smart plant system developed at RAIoT Labs, Amity University Rajasthan, combining IoT, AI, and Machine Learning to revolutionize plant care. This portable pot allows plants to communicate their needs through an emotive display, smart alerts, and a touch-interactive interface. It connects seamlessly with smartphones, monitors soil health, and uses a built-in conversational AI for two-way communication. Powered by an 8-billion-parameter LLM on a Raspberry Pi, it ensures intelligent plant monitoring and response. Future upgrades include self-watering, theft detection, and autonomous movement for optimal sunlight, making it a smart and sustainable solution for modern plant lovers."
+                data-project-features="Emotive display for plant communication, Smart alerts and notifications, Touch-interactive interface, Smartphone connectivity, Soil health monitoring, Conversational AI with 8-billion-parameter LLM, Raspberry Pi powered, Future: Self-watering, Theft detection, Autonomous movement"
+                data-project-contributors='[{"name": "Chetan Singh Chouhan", "affiliation": "RAIoT Labs, Amity University Rajasthan, Jaipur, India", "email": "chouhanchetan066@gmail.com", "linkedin": "https://www.linkedin.com/in/chetan-singh-chouhan-b6bb4a265/"}]'>
+              <div class="project-card">
+                <div class="project-card-image">
+                  <img src="./assets/images/pot_poster.png" alt="AI Powered Green MindPot" loading="lazy">
+                </div>
+                <p class="project-title">AI Powered Green MindPot</p>
+                <p class="project-powered">Powered By</p>
+                <p class="project-category">IoT and AI</p>
+                <div class="project-buttons">
+                  <a href="https://github.com/Chetansingh384" target="_blank" class="project-btn project-btn-github">
+                    <ion-icon name="logo-github"></ion-icon>
+                    View GitHub
+                  </a>
+                  <button class="project-btn project-btn-details" data-project-modal="ai-powered-green-mindpot">
+                    <ion-icon name="information-circle-outline"></ion-icon>
+                    Details
+                  </button>
+                </div>
+              </div>
+            </li>
+
+            <li class="project-item active" data-filter-item data-category="IoT"
+                data-project-id="intelligent-waste-management"
+                data-project-title="Intelligent Waste Management System"
+                data-project-category="IoT"
+                data-project-github="https://github.com/Chetansingh384"
+                data-project-image="./assets/images/iwms_poster.png"
+                data-project-detail-image="./assets/images/iwms.png"
+                data-project-description="An innovative IoT-based solution designed to modernize waste collection and promote environmental awareness. Features touchless operation, automated alerts, and interactive user engagement."
+                data-project-abstract="The Intelligent Waste Management System (IWMS) is an innovative IoT-based solution designed to modernize waste collection and promote environmental awareness. The system features touchless operation, automatically opening its lid when a person approaches for a hygienic experience. Equipped with smart sensors, it detects the fill level of the bin and automatically sends alerts to nearby municipal corporations when the bin reaches capacity, ensuring timely waste collection. The system integrates pollution-level monitoring sensors to measure air quality around the bin, helping to track and control local environmental conditions. It features an engaging real-time emotion display that interacts with users, especially children, to encourage proper waste disposal and make cleanliness an enjoyable habit. The goal is to create a smarter, cleaner, and more sustainable urban environment by combining automation, IoT, and interactive technology."
+                data-project-features="Touchless operation with automatic lid opening, Fill level detection sensors, Automated alerts to municipal corporation, Environmental monitoring (air quality sensors), Interactive emotion display for user engagement, Real-time pollution level tracking, Smart and sustainable urban solution"
+                data-project-contributors='[{"name": "Chetan Singh Chouhan", "affiliation": "RAIoT Labs, Amity University Rajasthan, Jaipur, India", "email": "chouhanchetan066@gmail.com", "linkedin": "https://www.linkedin.com/in/chetan-singh-chouhan-b6bb4a265/"}]'>
+              <div class="project-card">
+                <div class="project-card-image">
+                  <img src="./assets/images/iwms_poster.png" alt="Intelligent Waste Management System" loading="lazy">
+                </div>
+                <p class="project-title">Intelligent Waste Management System</p>
+                <p class="project-powered">Powered By</p>
+                <p class="project-category">IoT</p>
+                <div class="project-buttons">
+                  <a href="https://github.com/Chetansingh384" target="_blank" class="project-btn project-btn-github">
+                    <ion-icon name="logo-github"></ion-icon>
+                    View GitHub
+                  </a>
+                  <button class="project-btn project-btn-details" data-project-modal="intelligent-waste-management">
+                    <ion-icon name="information-circle-outline"></ion-icon>
+                    Details
+                  </button>
+                </div>
+              </div>
             </li>
         
           </ul>
@@ -631,6 +742,43 @@
         </section>
         
       </article>
+      
+      <!--
+        - #PROJECT DETAILS MODAL
+      -->
+ 
+      <div class="project-modal-container" data-project-modal-container>
+        <div class="project-modal-overlay" data-project-modal-overlay></div>
+        <div class="project-modal">
+          <button class="project-modal-close" data-project-modal-close>
+            <ion-icon name="close-outline"></ion-icon>
+          </button>
+          <div class="project-modal-content">
+            <h2 class="project-modal-title" data-project-modal-title></h2>
+            <div class="project-modal-top-section">
+              <div class="project-modal-left-column">
+                <div class="project-modal-description-box">
+                  <h3 class="project-modal-section-title">Description</h3>
+                  <p class="project-modal-description" data-project-modal-description></p>
+                </div>
+                <div class="project-modal-features-box">
+                  <h3 class="project-modal-section-title">Features</h3>
+                  <ul class="project-modal-features" data-project-modal-features></ul>
+                </div>
+              </div>
+              <div class="project-modal-image">
+                <img src="" alt="Project Image" data-project-modal-img>
+              </div>
+            </div>
+            <div class="project-modal-actions">
+              <a href="" target="_blank" class="project-modal-btn project-modal-btn-github" data-project-modal-github>
+                <ion-icon name="logo-github"></ion-icon>
+                View on GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
       
       
 
@@ -648,65 +796,135 @@
           <h2 class="h2 article-title">Skills</h2>
         </header>
       
-        <section class="skills-list">
-      
-          <ul class="skills-items">
-      
-            <li class="skills-item">
-              <figure class="skills-icon-box">
-                <img src="./assets/images/cpp-icon1.png" alt="C++" loading="lazy">
-              </figure>
-              <h3 class="h3 skills-title">C++</h3>
-              <p class="skills-text">
-                Proficient in C++ for software development and problem-solving.
-              </p>
-            </li>
-      
-            <li class="skills-item">
-              <figure class="skills-icon-box">
-                <img src="./assets/images/python-icon1.png" alt="Python" loading="lazy">
-              </figure>
-              <h3 class="h3 skills-title">Python</h3>
-              <p class="skills-text">
-                Expertise in Python programming, including Flask for web development.
-              </p>
-            </li>
-      
-            <li class="skills-item">
-              <figure class="skills-icon-box">
-                <img src="./assets/images/icon-ml.png" alt="AI & ML" loading="lazy">
-              </figure>
-              <h3 class="h3 skills-title">AI & ML</h3>
-              <p class="skills-text">
-                Experienced in Artificial Intelligence and Machine Learning, implementing real-world projects.
-              </p>
-            </li>
-      
-            <li class="skills-item">
-              <figure class="skills-icon-box">
-                <img src="./assets/images/icon-iot.png" alt="IoT" loading="lazy">
-              </figure>
-              <h3 class="h3 skills-title">IoT</h3>
-              <p class="skills-text">
-                Skilled in IoT solutions with expertise in system integration and automation.
-              </p>
-            </li>
-      
-            <li class="skills-item">
-              <figure class="skills-icon-box">
-                <img src="./assets/images/deep.jpg" alt="Deep Learning" loading="lazy">
-              </figure>
-              <h3 class="h3 skills-title">Deep Learning</h3>
-              <p class="skills-text">
-                Proficient in deep learning frameworks and techniques for advanced AI applications.
-              </p>
-            </li>
-      
-          </ul>
-      
+        <section class="skills-section-modern">
+          <div class="skills-content">
+            <!-- Programming Skills Category -->
+            <div class="skills-category">
+              <h3 class="skills-category-title">Programming Skills</h3>
+              <div class="skills-grid">
+                <div class="skill-item-modern">
+                  <div class="skill-icon-wrapper">
+                    <img src="./assets/images/cpp-icon1.png" alt="C++" loading="lazy" class="skill-icon">
+                  </div>
+                  <span class="skill-name">C++</span>
+                </div>
+                
+                <div class="skill-item-modern">
+                  <div class="skill-icon-wrapper">
+                    <img src="./assets/images/python-icon1.png" alt="Python" loading="lazy" class="skill-icon">
+                  </div>
+                  <span class="skill-name">Python</span>
+                </div>
+                
+                <div class="skill-item-modern">
+                  <div class="skill-icon-wrapper">
+                    <svg class="skill-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                      <path fill="#fff" d="M108.4 0h23v22.8h21.2V0h23v69h-23V46h-21v23h-23.2M206 23h-20.3V0h63.7v23H229v46h-23M259.5 0h24.1l14.8 24.3L313.2 0h24.1v69h-23V34.8l-16.1 24.8l-16.1-24.8v34.2h-22.5M348.7 0h23v46.2h32.6V69h-55.6"/>
+                      <path fill="#E34F26" d="M107.6 471l-33-370.4h362.8l-33 370.2L255.7 512"/>
+                      <path fill="#EF652A" d="M256 480.5V131H404.3L376 447"/>
+                      <path fill="#EBEBEB" d="M256 268.2h-89.3l-6.2-69.4h95.5v-67.8H142l15.6 174.4h98.4v-67.8zm0 140.9l-.1-.1-50.1-13.5-3.2-35.9h-47.6l6.2 69.4 99.5 27.6.1-.1v-47.7z"/>
+                      <path fill="#fff" d="M255.8 268.2v67.7h55.4l-5.3 59-50.1 13.6v47.7l99.5-27.6.7-7.7 11.6-129.2H255.8zm0-137.2v67.8h136.1l.4-4.4 3.7-41.3.7-7.8H255.8z"/>
+                    </svg>
+                  </div>
+                  <span class="skill-name">HTML5</span>
+                </div>
+                
+              </div>
+            </div>
+            
+            <!-- Technical Skills Category -->
+            <div class="skills-category">
+              <h3 class="skills-category-title">Technical Skills</h3>
+              <div class="skills-grid">
+                <div class="skill-item-modern">
+                  <div class="skill-icon-wrapper">
+                    <svg class="skill-icon django-logo" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" style="display: block;">
+                      <defs>
+                        <linearGradient id="django-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" style="stop-color:#0C4B33;stop-opacity:1" />
+                          <stop offset="50%" style="stop-color:#092E20;stop-opacity:1" />
+                          <stop offset="100%" style="stop-color:#0C4B33;stop-opacity:1" />
+                        </linearGradient>
+                        <filter id="django-gloss">
+                          <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
+                          <feOffset dx="0" dy="2" result="offsetblur"/>
+                          <feComponentTransfer>
+                            <feFuncA type="linear" slope="0.3"/>
+                          </feComponentTransfer>
+                          <feMerge>
+                            <feMergeNode/>
+                            <feMergeNode in="SourceGraphic"/>
+                          </feMerge>
+                        </filter>
+                      </defs>
+                      <!-- Dark green rounded square background -->
+                      <rect x="50" y="50" width="412" height="412" rx="40" ry="40" fill="url(#django-gradient)" filter="url(#django-gloss)" style="fill: #0C4B33 !important;"/>
+                      <!-- Large white "dj" letters -->
+                      <text x="256" y="280" font-family="Arial, Helvetica, sans-serif" font-size="180" font-weight="900" fill="#FFFFFF" text-anchor="middle" style="fill: #FFFFFF !important;">dj</text>
+                      <!-- Smaller "django" text below -->
+                      <text x="256" y="340" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="600" fill="#FFFFFF" text-anchor="middle" style="fill: #FFFFFF !important;">django</text>
+                    </svg>
+                  </div>
+                  <span class="skill-name">Django</span>
+                </div>
+                
+                <div class="skill-item-modern">
+                  <div class="skill-icon-wrapper">
+                    <img src="./assets/images/icon-iot.png" alt="IoT" loading="lazy" class="skill-icon">
+                  </div>
+                  <span class="skill-name">IoT</span>
+                </div>
+                
+                <div class="skill-item-modern">
+                  <div class="skill-icon-wrapper">
+                    <img src="./assets/images/icon-ml.png" alt="AI & ML" loading="lazy" class="skill-icon">
+                  </div>
+                  <span class="skill-name">AI & ML</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Soft Skills Category -->
+            <div class="skills-category">
+              <h3 class="skills-category-title">Soft Skills</h3>
+              <div class="skills-grid">
+                <div class="skill-item-modern">
+                  <div class="skill-icon-wrapper">
+                    <ion-icon name="people-outline"></ion-icon>
+                  </div>
+                  <span class="skill-name">Teamwork</span>
+                </div>
+                
+                <div class="skill-item-modern">
+                  <div class="skill-icon-wrapper">
+                    <ion-icon name="trophy-outline"></ion-icon>
+                  </div>
+                  <span class="skill-name">Leadership</span>
+                </div>
+                
+                <div class="skill-item-modern">
+                  <div class="skill-icon-wrapper">
+                    <ion-icon name="bulb-outline"></ion-icon>
+                  </div>
+                  <span class="skill-name">Problem Solving</span>
+                </div>
+                
+                <div class="skill-item-modern">
+                  <div class="skill-icon-wrapper">
+                    <ion-icon name="chatbubbles-outline"></ion-icon>
+                  </div>
+                  <span class="skill-name">Communication</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
       
       </article>
+      
+
+
+
       
 
 
@@ -728,9 +946,9 @@
           <h3 class="h3 form-title">Contact Form</h3>
       
           <!-- Hidden iframe to handle form submission -->
-          <iframe name="hidden_iframe" style="display:none;"></iframe>
-      
-          <form action="https://api.web3forms.com/submit" method="POST" target="hidden_iframe" class="form" data-form onsubmit="refreshForm(this);">
+          <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="handleFormSubmit(this);"></iframe>
+          
+          <form action="https://api.web3forms.com/submit" method="POST" target="hidden_iframe" class="form" data-form onsubmit="handleFormSubmitStart(this);">
       
             <!-- Hidden Access Key -->
             <input type="hidden" name="access_key" value="2882df4a-c610-4233-ac33-8ce80d9257ff">
@@ -758,16 +976,321 @@
           </form>
       
         </section>
+
+        <!--
+          - #SOCIAL MEDIA
+        -->
+
+        <section class="social-media">
+      
+          <div class="contact-email">
+            <div class="contact-email-icon">
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+            <a href="mailto:chetansingh0384@gmail.com" class="contact-email-link">chetansingh0384@gmail.com</a>
+          </div>
+      
+          <div class="social-icons-row">
+            <a href="https://github.com/Chetansingh384" target="_blank" class="social-icon-circle" title="GitHub">
+              <ion-icon name="logo-github"></ion-icon>
+            </a>
+            <a href="https://www.linkedin.com/in/chetan-singh-chouhan-b6bb4a265/" target="_blank" class="social-icon-circle" title="LinkedIn">
+              <ion-icon name="logo-linkedin"></ion-icon>
+            </a>
+          </div>
+      
+        </section>
       
       </article>
       
+      <!--
+        - #ADMIN PANEL
+      -->
+
+      <article class="admin-panel" data-page="admin" style="display: none;">
+
+        <header>
+          <h2 class="h2 article-title">Admin Panel</h2>
+        </header>
+
+        <!-- Password Prompt (shown first) -->
+        <div class="admin-password-prompt" id="admin-password-prompt">
+          <div class="admin-password-card">
+            <h3 class="admin-password-title">Enter Admin Password</h3>
+            <form id="admin-password-form">
+              <div class="form-group">
+                <input type="password" id="admin-password-input" placeholder="Enter password" required autocomplete="current-password">
+                <button type="button" class="password-toggle" id="admin-password-toggle">
+                  <ion-icon name="eye-outline"></ion-icon>
+                </button>
+              </div>
+              <button type="submit" class="login-btn">Access Admin Panel</button>
+              <div class="login-error" id="admin-password-error"></div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Admin Panel Content (shown after password) -->
+        <div class="admin-container-inline" id="admin-panel-content" style="display: none;">
+          <div class="admin-header-inline">
+            <h1 class="admin-title">Portfolio Admin Panel</h1>
+            <button class="admin-logout-btn" id="admin-logout-btn">
+              <ion-icon name="log-out-outline"></ion-icon>
+              Logout
+            </button>
+          </div>
+
+          <div class="admin-tabs">
+            <button class="admin-tab active" data-tab="projects">Projects</button>
+            <button class="admin-tab" data-tab="skills">Skills</button>
+          </div>
+
+          <!-- Projects Section -->
+          <section class="admin-section active" id="projects-section">
+            <div class="admin-section-header">
+              <h2>Manage Projects</h2>
+              <button class="admin-add-btn" id="add-project-btn">
+                <ion-icon name="add-circle-outline"></ion-icon>
+                Add New Project
+              </button>
+            </div>
+
+            <div class="admin-form-container" id="project-form-container" style="display: none;">
+              <form class="admin-form" id="project-form">
+                <h3>Add/Edit Project</h3>
+                
+                <!-- Basic Information -->
+                <div class="form-group">
+                  <label for="project-id">Project ID <span class="required">*</span></label>
+                  <input type="text" id="project-id" name="project-id" required placeholder="e.g., email-classification">
+                  <small>Unique identifier (used for modal opening)</small>
+                </div>
+
+                <div class="form-group">
+                  <label for="project-title">Project Title <span class="required">*</span></label>
+                  <input type="text" id="project-title" name="project-title" required placeholder="e.g., Email Classification">
+                  <small>Displayed on project card and modal</small>
+                </div>
+
+                <div class="form-group">
+                  <label for="project-category">Category <span class="required">*</span></label>
+                  <input type="text" id="project-category" name="project-category" required placeholder="e.g., Machine Learning, IoT and AI, Deep Learning">
+                  <small>Used for filtering projects</small>
+                </div>
+
+                <!-- Images -->
+                <div class="form-group">
+                  <label for="project-image">Thumbnail Image URL <span class="required">*</span></label>
+                  <input type="text" id="project-image" name="project-image" required placeholder="e.g., ./assets/images/project-1.jpg">
+                  <small>Or upload an image file</small>
+                  <input type="file" id="project-image-file" name="project-image-file" accept="image/*">
+                  <small>Shown in project card grid</small>
+                </div>
+
+                <div class="form-group">
+                  <label for="project-detail-image">Detail Image URL (optional)</label>
+                  <input type="text" id="project-detail-image" name="project-detail-image" placeholder="e.g., ./assets/images/project-1-detail.jpg">
+                  <small>Or upload an image file</small>
+                  <input type="file" id="project-detail-image-file" name="project-detail-image-file" accept="image/*">
+                  <small>Shown in modal detail view. If empty, thumbnail image will be used.</small>
+                </div>
+
+                <!-- Description & Content -->
+                <div class="form-group">
+                  <label for="project-description">Description <span class="required">*</span></label>
+                  <textarea id="project-description" name="project-description" required rows="3" placeholder="Brief description shown in project card and modal"></textarea>
+                  <small>Short description displayed in project modal</small>
+                </div>
+
+                <div class="form-group">
+                  <label for="project-abstract">Abstract (optional)</label>
+                  <textarea id="project-abstract" name="project-abstract" rows="5" placeholder="Detailed description shown in modal. If empty, description will be used."></textarea>
+                  <small>Longer detailed description for modal view</small>
+                </div>
+
+                <div class="form-group">
+                  <label for="project-features">Features <span class="required">*</span></label>
+                  <input type="text" id="project-features" name="project-features" required placeholder="e.g., Feature 1, Feature 2, Feature 3">
+                  <small>Comma-separated list shown as bullet points in modal</small>
+                </div>
+
+                <!-- Links & Contributors -->
+                <div class="form-group">
+                  <label for="project-github">GitHub Repository URL (optional)</label>
+                  <input type="text" id="project-github" name="project-github" placeholder="https://github.com/username/repo or leave empty for private repo">
+                  <small>Leave empty or use profile URL to show "Repository is Private" message</small>
+                </div>
+
+                <div class="form-group">
+                  <label for="project-contributors">Contributors (optional)</label>
+                  <textarea id="project-contributors" name="project-contributors" rows="3" placeholder='Simple text: "Chetan Singh Chouhan" or JSON: [{"name": "Name", "email": "email@example.com", "linkedin": "https://linkedin.com/in/profile"}]'></textarea>
+                  <small>Enter simple text for single contributor or JSON array for multiple</small>
+                </div>
+
+                <div class="form-actions">
+                  <button type="submit" class="form-submit-btn">Save Project</button>
+                  <button type="button" class="form-cancel-btn" id="cancel-project-btn">Cancel</button>
+                </div>
+              </form>
+            </div>
+
+            <div class="admin-list" id="projects-list">
+              <!-- Projects will be listed here -->
+            </div>
+          </section>
+
+          <!-- Skills Section -->
+          <section class="admin-section" id="skills-section">
+            <div class="admin-section-header">
+              <h2>Manage Skills</h2>
+              <button class="admin-add-btn" id="add-skill-btn">
+                <ion-icon name="add-circle-outline"></ion-icon>
+                Add New Skill
+              </button>
+            </div>
+
+            <div class="admin-form-container" id="skill-form-container" style="display: none;">
+              <form class="admin-form" id="skill-form">
+                <h3>Add/Edit Skill</h3>
+                
+                <div class="form-group">
+                  <label for="skill-name">Skill Name</label>
+                  <input type="text" id="skill-name" name="skill-name" required placeholder="e.g., Python">
+                </div>
+
+                <div class="form-group">
+                  <label for="skill-category">Category</label>
+                  <select id="skill-category" name="skill-category" required>
+                    <option value="Programming Skills">Programming Skills</option>
+                    <option value="Technical Skills">Technical Skills</option>
+                    <option value="Soft Skills">Soft Skills</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="skill-icon">Icon Type</label>
+                  <select id="skill-icon-type" name="skill-icon-type" required>
+                    <option value="image">Image Icon</option>
+                    <option value="ionicon">Ionicon</option>
+                    <option value="svg">SVG Code</option>
+                  </select>
+                </div>
+
+                <div class="form-group" id="skill-icon-image-group">
+                  <label for="skill-icon-image">Icon Image URL</label>
+                  <input type="text" id="skill-icon-image" name="skill-icon-image" placeholder="e.g., ./assets/images/python-icon1.png">
+                  <input type="file" id="skill-icon-file" name="skill-icon-file" accept="image/*">
+                </div>
+
+                <div class="form-group" id="skill-icon-ionicon-group" style="display: none;">
+                  <label for="skill-icon-ionicon">Ionicon Name</label>
+                  <input type="text" id="skill-icon-ionicon" name="skill-icon-ionicon" placeholder="e.g., code-outline">
+                  <small>Visit <a href="https://ionic.io/ionicons" target="_blank">Ionicons</a> to find icon names</small>
+                </div>
+
+                <div class="form-group" id="skill-icon-svg-group" style="display: none;">
+                  <label for="skill-icon-svg">SVG Code</label>
+                  <textarea id="skill-icon-svg" name="skill-icon-svg" rows="5" placeholder="Paste SVG code here"></textarea>
+                </div>
+
+                <div class="form-actions">
+                  <button type="submit" class="form-submit-btn">Save Skill</button>
+                  <button type="button" class="form-cancel-btn" id="cancel-skill-btn">Cancel</button>
+                </div>
+              </form>
+            </div>
+
+            <div class="admin-list" id="skills-list">
+              <!-- Skills will be listed here -->
+            </div>
+          </section>
+        </div>
+        </div>
+
+      </article>
+      
+      <!--
+        - #LOGIN MODAL
+      -->
+      <div class="login-modal-container" id="login-modal-container" style="display: none;">
+        <div class="login-modal-overlay" id="login-modal-overlay"></div>
+        <div class="login-modal-card">
+          <button class="login-modal-close" id="login-modal-close">
+            <ion-icon name="close-outline"></ion-icon>
+          </button>
+          <div class="login-header">
+            <h1 class="login-title">Admin Login</h1>
+            <p class="login-subtitle">Access the Portfolio Admin Panel</p>
+          </div>
+
+          <form class="login-form" id="login-form">
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" required placeholder="Enter admin password" autocomplete="current-password">
+              <button type="button" class="password-toggle" id="password-toggle">
+                <ion-icon name="eye-outline"></ion-icon>
+              </button>
+            </div>
+
+            <button type="submit" class="login-btn">
+              <ion-icon name="lock-closed-outline"></ion-icon>
+              Login
+            </button>
+
+            <div class="login-error" id="login-error"></div>
+          </form>
+        </div>
+      </div>
+
+      <!--
+        - #NOTIFICATION
+      -->
+      <div class="notification" id="notification">
+        <div class="notification-content">
+          <div class="notification-icon-box">
+            <ion-icon name="checkmark-circle"></ion-icon>
+          </div>
+          <p class="notification-message">Your message has been sent successfully!</p>
+        </div>
+      </div>
+
       <script>
-        // JavaScript function to reset the form after submission
-        function refreshForm(form) {
-          setTimeout(() => {
-            form.reset(); // Clears the form fields
-          }, 500); // Delay to allow submission to process
-          return true; // Ensures the form still submits
+        let formSubmitted = false;
+
+        // Function to handle form submission start
+        function handleFormSubmitStart(form) {
+          formSubmitted = true;
+          return true; // Allow form to submit
+        }
+
+        // Function to handle form submission after iframe loads
+        function handleFormSubmit(iframe) {
+          if (formSubmitted) {
+            // Show success notification
+            showNotification();
+            
+            // Reset form after a short delay
+            const form = document.querySelector('[data-form]');
+            if (form) {
+              setTimeout(() => {
+                form.reset();
+                formSubmitted = false;
+              }, 500);
+            }
+          }
+        }
+
+        // Function to show notification
+        function showNotification() {
+          const notification = document.getElementById('notification');
+          if (notification) {
+            notification.classList.add('show');
+            
+            // Hide notification after 4 seconds
+            setTimeout(() => {
+              notification.classList.remove('show');
+            }, 4000);
+          }
         }
       </script>
       
@@ -790,6 +1313,193 @@
   -->
  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <!--
+    - Galaxy Star Background Effect
+  -->
+  <script>
+    (function() {
+      const canvas = document.getElementById('galaxy-canvas');
+      if (!canvas) return;
+      
+      const ctx = canvas.getContext('2d');
+      let width = window.innerWidth;
+      let height = window.innerHeight;
+      
+      // Set canvas size
+      function resizeCanvas() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
+      }
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas);
+      
+      // Star configuration - matching website theme
+      const starCount = window.innerWidth < 768 ? 150 : window.innerWidth < 1024 ? 250 : 400;
+      const stars = [];
+      let mouseX = null;
+      let mouseY = null;
+      const hoverRadius = 200;
+      const hoverStrength = 0.5;
+      const connectionDistance = 120; // Distance for connecting stars
+      
+      // Website theme colors (orange-yellow)
+      const starColor = { r: 255, g: 193, b: 116 }; // orange-yellow-crayola
+      const connectionColor = { r: 255, g: 193, b: 116 }; // Same theme color
+      
+      // Star class
+      class Star {
+        constructor() {
+          this.reset();
+        }
+        
+        reset() {
+          this.x = Math.random() * width;
+          this.y = Math.random() * height;
+          this.size = Math.random() * 1.5 + 0.5;
+          this.speedX = (Math.random() - 0.5) * 0.3;
+          this.speedY = (Math.random() - 0.5) * 0.3;
+          this.opacity = Math.random() * 0.6 + 0.3;
+          this.originalX = this.x;
+          this.originalY = this.y;
+          this.targetX = this.x;
+          this.targetY = this.y;
+        }
+        
+        update() {
+          // Random movement
+          this.originalX += this.speedX;
+          this.originalY += this.speedY;
+          
+          // Wrap around edges
+          if (this.originalX < 0) this.originalX = width;
+          if (this.originalX > width) this.originalX = 0;
+          if (this.originalY < 0) this.originalY = height;
+          if (this.originalY > height) this.originalY = 0;
+          
+          // Hover effect - move towards cursor
+          if (mouseX !== null && mouseY !== null) {
+            const dx = mouseX - this.x;
+            const dy = mouseY - this.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            
+            if (distance < hoverRadius) {
+              const angle = Math.atan2(dy, dx);
+              const force = (1 - distance / hoverRadius) * hoverStrength;
+              this.targetX = this.x + Math.cos(angle) * force * 30;
+              this.targetY = this.y + Math.sin(angle) * force * 30;
+            } else {
+              this.targetX = this.originalX;
+              this.targetY = this.originalY;
+            }
+          } else {
+            this.targetX = this.originalX;
+            this.targetY = this.originalY;
+          }
+          
+          // Smooth interpolation
+          this.x += (this.targetX - this.x) * 0.1;
+          this.y += (this.targetY - this.y) * 0.1;
+        }
+        
+        draw() {
+          // Create glow effect with theme colors
+          const gradient = ctx.createRadialGradient(
+            this.x, this.y, 0,
+            this.x, this.y, this.size * 4
+          );
+          gradient.addColorStop(0, `rgba(${starColor.r}, ${starColor.g}, ${starColor.b}, ${this.opacity})`);
+          gradient.addColorStop(0.5, `rgba(${starColor.r}, ${starColor.g}, ${starColor.b}, ${this.opacity * 0.5})`);
+          gradient.addColorStop(1, `rgba(${starColor.r}, ${starColor.g}, ${starColor.b}, 0)`);
+          
+          ctx.fillStyle = gradient;
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size * 3, 0, Math.PI * 2);
+          ctx.fill();
+          
+          // Draw star center
+          ctx.fillStyle = `rgba(${starColor.r}, ${starColor.g}, ${starColor.b}, ${this.opacity})`;
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+      
+      // Draw connections between nearby stars
+      function drawConnections() {
+        for (let i = 0; i < stars.length; i++) {
+          for (let j = i + 1; j < stars.length; j++) {
+            const dx = stars[i].x - stars[j].x;
+            const dy = stars[i].y - stars[j].y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            
+            if (distance < connectionDistance) {
+              // Calculate opacity based on distance
+              const opacity = (1 - distance / connectionDistance) * 0.3;
+              
+              // Increase opacity near cursor
+              let lineOpacity = opacity;
+              if (mouseX !== null && mouseY !== null) {
+                const midX = (stars[i].x + stars[j].x) / 2;
+                const midY = (stars[i].y + stars[j].y) / 2;
+                const cursorDx = mouseX - midX;
+                const cursorDy = mouseY - midY;
+                const cursorDistance = Math.sqrt(cursorDx * cursorDx + cursorDy * cursorDy);
+                
+                if (cursorDistance < hoverRadius) {
+                  lineOpacity = opacity * (1 + (1 - cursorDistance / hoverRadius) * 0.5);
+                }
+              }
+              
+              ctx.strokeStyle = `rgba(${connectionColor.r}, ${connectionColor.g}, ${connectionColor.b}, ${Math.min(lineOpacity, 0.4)})`;
+              ctx.lineWidth = 0.5;
+              ctx.beginPath();
+              ctx.moveTo(stars[i].x, stars[i].y);
+              ctx.lineTo(stars[j].x, stars[j].y);
+              ctx.stroke();
+            }
+          }
+        }
+      }
+      
+      // Initialize stars
+      for (let i = 0; i < starCount; i++) {
+        stars.push(new Star());
+      }
+      
+      // Mouse tracking
+      document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+      });
+      
+      document.addEventListener('mouseleave', () => {
+        mouseX = null;
+        mouseY = null;
+      });
+      
+      // Animation loop
+      function animate() {
+        ctx.fillStyle = 'rgba(7, 7, 7, 0.15)';
+        ctx.fillRect(0, 0, width, height);
+        
+        // Draw connections first (behind stars)
+        drawConnections();
+        
+        // Then draw stars
+        stars.forEach(star => {
+          star.update();
+          star.draw();
+        });
+        
+        requestAnimationFrame(animate);
+      }
+      
+      animate();
+    })();
+  </script>
 
 
 
